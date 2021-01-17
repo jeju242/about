@@ -159,22 +159,7 @@
                     };
                     
                     var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
-            
-            
-                    // 지도에 클릭 이벤트를 등록합니다
-                    // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
-                    kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
-                        
-                        // 클릭한 위도, 경도 정보를 가져옵니다 
-                        var latlng = mouseEvent.latLng; 
-                        
-                        var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
-                        message += '경도는 ' + latlng.getLng() + ' 입니다';
-                        
-                        var resultDiv = document.getElementById('clickLatlng'); 
-                        resultDiv.innerHTML = message;
-                        
-                    });
+        
             
                     
                     // 다각형을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 다각형을 표시합니다
