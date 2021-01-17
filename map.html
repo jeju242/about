@@ -141,7 +141,7 @@
 							<div class="d-flex mapbottom">
 								<div>
                     <!--kakaomapapi 사용하는 곳-->
-                    <div id="Jmap" style="width:1500px;height:600px;"></div>
+                    <div id="Jmap" style="width:1000px;height:600px;"></div>
                                     
                     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d8b40d9e46e415cfba86d7e521e50631"></script>
 								</div>
@@ -250,7 +250,7 @@
                         $('#explanation_content').css('display','none');
                         $('#explanation_content').html(null)
                         //설명창 닫은후 맵 크기 다시 늘여줌
-                        $('#Jmap').css('width','1500px');
+                        $('#Jmap').css('width','1000px');
                         //카카오맵 크기 변경후 다시 맞춰주는 함수(map.relayout()) 호출
                         setTimeout(function(){ map.relayout(); }, 300);
                         //카카오 맵 중앙설정 변경
@@ -448,7 +448,7 @@
                     // 건축학과 설명창 띄우는 함수입니다.
                     function ConstructionEngineering_description(){
                         //카카오 맵 크기 줄이기
-                        $('#Jmap').css('width','1000px');
+                        $('#Jmap').css('width','600px');
                         //카카오 맵 중앙설정 변경
                         var moveLatLon = new kakao.maps.LatLng(33.45683125623853, 126.56508373431454);
                         
@@ -467,7 +467,7 @@
                     // 컴퓨터 공학과 설명창 띄우는 함수입니다.
                     function ComputerScienceEngineering_description(){
                         //카카오 맵 크기 줄이기
-                        $('#Jmap').css('width','1000px');
+                        $('#Jmap').css('width','600px');
                         //카카오 맵 중앙설정 변경
                         var moveLatLon = new kakao.maps.LatLng(33.45683125623853, 126.56508373431454);
                         
@@ -486,7 +486,7 @@
                     // 메카트로닉스 학과 설명창 띄우는 함수입니다.
                     function Mechatronics_description(){
                         //카카오 맵 크기 줄이기
-                        $('#Jmap').css('width','1000px');
+                        $('#Jmap').css('width','600px');
                         //카카오 맵 중앙설정 변경
                         var moveLatLon = new kakao.maps.LatLng(33.45683125623853, 126.56508373431454);
                         
@@ -505,7 +505,7 @@
                     // 에너지공학과 설명창 띄우는 함수입니다.
                     function EnergeEngineering_description(){
                         //카카오 맵 크기 줄이기
-                        $('#Jmap').css('width','1000px');
+                        $('#Jmap').css('width','600px');
                         //카카오 맵 중앙설정 변경
                         var moveLatLon = new kakao.maps.LatLng(33.45683125623853, 126.56508373431454);
                         
