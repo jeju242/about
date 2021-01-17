@@ -1,8 +1,9 @@
 // 문제 객체(생성자 함수)
-function Question(text, choice, answer) {
+function Question(text, choice, answer, explain) {
   this.text = text; // 질문 텍스트
   this.choice = choice; // 선택할 답들(배열)
   this.answer = answer; // 정답 정보
+  this.explain = explain;
 }
 
 // 퀴즈 정보 객체
@@ -18,10 +19,10 @@ Quiz.prototype.correctAnswer = function(answer) {
 }
 
 var questions = [
-  new Question('제주대학교를 상징하는 동물은?', ['호랑이', '수달', '사슴', '독수리'], '사슴'),
-  new Question('제주대학교 교훈에 해당하지 않는 것은?', ['진리', '도전', '정의', '창조'], '도전'),
-  new Question('제주대학교 설립년도는?', ['1949년', '1950년', '1951년', '1952년'], '1952년'),
-  new Question('제주대학교 학생들이 약 1만명임을 뜻하는 단어는?', ['일만제대', '일만아라', '일만사라', '일만한라'], '일만아라')
+  new Question('제주대학교를 상징하는 동물은?', ['호랑이', '수달', '사슴', '독수리'], '사슴', '제주대학교를 상징하는 동물은 사슴입니다.'),
+  new Question('제주대학교 교훈에 해당하지 않는 것은?', ['진리', '도전', '정의', '창조'], '도전','제주대학교 교훈은 진리,정의,창조 3가지 입니다.'),
+  new Question('제주대학교 설립년도는?', ['1949년', '1950년', '1951년', '1952년'], '1952년','제주대학교의 설립년도는 1952년입니다.'),
+  new Question('제주대학교 학생들이 약 1만명임을 뜻하는 단어는?', ['일만제대', '일만아라', '일만사라', '일만한라'], '일만아라','제주대학교 학생들이 약 1만명임을 뜻하는 단어는 일만아라입니다.')
 ];
 
 // 퀴즈 객체 생성
@@ -51,6 +52,18 @@ function progress() {
 
 var btn = document.querySelectorAll('.btn');
 
+
+//틀릴시 해설 보여주는 함수
+function printExplain(){
+  var explain= '';
+  var question=quiz.questions[quiz.questionIndex].explain
+  
+  explain +=question;
+  alert('오답입니다! '+explain);
+  //$("#exp").append(explain);
+}
+
+
 // 입력 및 정답 확인 함수
 function checkAnswer(i) {
   btn[i].addEventListener('click', function() {
@@ -60,7 +73,8 @@ function checkAnswer(i) {
         alert('정답입니다!');
         quiz.score++;
      } else {
-        alert('틀렸습니다!');
+        printExplain();
+        
      }
 
      if (quiz.questionIndex < quiz.questions.length - 1) {
@@ -71,6 +85,10 @@ function checkAnswer(i) {
      }
   });
 }
+
+
+
+
 
 function result() {
   var quizDiv = document.getElementById('quiz');
