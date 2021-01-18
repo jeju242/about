@@ -73,13 +73,13 @@
 //     infowindow.close();
 // });
 
-var infowindow = new kakao.maps.CustomOverlay({zIndex:1,clickable:true});
+var infowindow = new kakao.maps.CustomOverlay({zIndex:9,clickable:true});
 var mapOption = {
     center: new kakao.maps.LatLng(33.4547007634407, 126.565112951543), // 지도의 중심좌표
     level: 3 // 지도의 확대 레벨
 };
 
-var map = new kakao.maps.Map(document.getElementById('Jmap'), mapOption);
+var map = new kakao.maps.Map(document.getElementById('map'), mapOption);
 
 var facilities = [// 건물정보
     ['세븐일레븐제주대글로벌점', '126.559646996263', '33.4567876094483'], ['세이슌제주대학교점', '126.559634344304', '33.4567370749012'], ['제주대학교해양과학대학1호관', '126.563771894297', '33.4570221817413'], 
@@ -232,6 +232,7 @@ function displayMarker(place) {
         infowindow.setMap(map);
         map.panTo(marker.getPosition());// 마커를 중심으로 부드럽게 이동
     });
+    // marker.setMap(map);
     return marker;
 
 }
