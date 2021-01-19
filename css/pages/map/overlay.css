@@ -1,0 +1,41 @@
+.info-container {position: absolute;
+    left: 170px;
+    bottom: 40%; 
+    width: 288px;
+    margin-left: -144px;
+    text-align: left;
+    /* overflow: hidden; */
+    font-size: 12px;
+    font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
+    line-height: 1.5;
+}
+.info-container {
+    box-sizing: border-box;
+    width: 140px;
+    padding: 5px;
+    background-color: white;
+    border: 1px dashed red;
+    border-radius: 5px;
+}
+.info-container .content {
+    border: 1px dashed blue;
+    border-radius: 5px;
+}
+.info-container .content+.content {
+    border-top: none;
+}
+.info-container .title {
+    /* overflow:scroll; */
+}
+.info-container .close {
+    position: absolute;
+    top: 5px;
+    right:0px;
+    /* color: #888; */
+    color: black;
+    width: 17px;
+    height: 17px;
+    /* background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png'); */
+}
+.info-container:hover {cursor:default;}
+.info-container .close:hover {cursor: pointer;}
