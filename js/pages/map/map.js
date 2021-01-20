@@ -34,7 +34,7 @@ function refineData(raw) {// 데이터를 객체로 저장
     return data;
 }
 
-function drawMap(mapOption){
+function drawMap(){
     // 지도를 생성합니다    
     let data = refineData(facilities);
     let area = new Array(8);
@@ -114,7 +114,7 @@ function displayMarker(place) {
 
         //// 오버레이 내용
         for (let i in place) {  
-            contents +=     '<div class="content">' + i +'</div>';
+            contents +=     '<button class="content">' + i +'</button>';
         }
         ////
         contents+=      '</div>';
