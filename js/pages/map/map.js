@@ -75,7 +75,7 @@ function drawMap(){
     }
 
     for (let i = 0; i<area.length; i++) {
-        // 작은 다각형이 가려지는 현상이 발생하여 zIndex를 설정함 임시
+        // 작은 다각형이 가려지는 현상이 발생하여 zIndex를 설정함
         rectangles[i].setZIndex(-i);
         rectangles[i].setMap(map);
         // 다각형에 클릭이벤트 등록
@@ -93,7 +93,7 @@ function drawMap(){
         });
     }
 }
-var prevMarker;
+var prevMarker;// 이전에 표시된 마커들을 저장
 
 function displayMarker(place) {
     // 마커를 생성
@@ -106,7 +106,7 @@ function displayMarker(place) {
         // 마커를 클릭하면 커스텀 오버레이
         // document.getElementById('Jmap').style.width = '50%';// 지도 크기 변경
         map.relayout();
-
+        // place.floors = ['test1','test2','test3','test4'];
         let contents = '<div class="info-container">\
                             <div class="title">' + place.place_name.slice(5) + '\
                                 <div class="close" onclick="overlayClose()" title="닫기">X</div>\
@@ -116,12 +116,25 @@ function displayMarker(place) {
         for (let i in place) {  
             contents +=     '<button class="content">' + i +'</button>';
         }
+        // for (let i of place.floors) {
+        //     contents += `<button class="content" id=${i}>${i}</button>` 
+        // }
         ////
         contents+=      '</div>';
+
         infowindow.setContent(contents);
         infowindow.setPosition(marker.getPosition());
         infowindow.setMap(map);
+        
+        document.querySelectorAll('button.content').forEach(element=>{ // 클래스명이 'content'인 버튼에 대해서
+            element.addEventListener("click",function() {// 클릭 이벤트 등록
+                console.log(element.textContent);
+            });
+            
+        });
+
         map.panTo(marker.getPosition());// 마커를 중심으로 부드럽게 이동
+
     });
     // marker.setMap(map);
     return marker;
