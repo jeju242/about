@@ -95,7 +95,19 @@ function drawMap(){
 }
 var prevMarker;// 이전에 표시된 마커들을 저장
 
+function inputTempData(place) { //// 테스트 데이터 넣으려고 임시로 만든 함수 나중에 삭제해야함
+    testData = {
+        '1층': {name:'건축학과',desc:'건축학과에 대한 내용 아무거나 입력',contact:'건축학과 전화번호'},
+        '2층': '2층학과',
+        '3층': '3층학과',
+        '4층': '4층학과'
+    };
+    place.floors = testData;
+}
+////
+
 function displayMarker(place) {
+    inputTempData(place);
     // 마커를 생성
     var marker = new kakao.maps.Marker({
         zIndex:1,
@@ -104,21 +116,16 @@ function displayMarker(place) {
     // 마커에 클릭이벤트를 등록합니다
     kakao.maps.event.addListener(marker, 'click', function() {
         // 마커를 클릭하면 커스텀 오버레이
-        // document.getElementById('Jmap').style.width = '50%';// 지도 크기 변경
-        map.relayout();
-        // place.floors = ['test1','test2','test3','test4'];
+        
         let contents = '<div class="info-container">\
                             <div class="title">' + place.place_name.slice(5) + '\
                                 <div class="close" onclick="overlayClose()" title="닫기">X</div>\
                             </div>';
 
         //// 오버레이 내용
-        for (let i in place) {  
-            contents +=     '<button class="content">' + i +'</button>';
+        for (let i in place.floors) {
+            contents += `<button class="content" id=${i}>${i} ${place.floors[i].name}</button>` 
         }
-        // for (let i of place.floors) {
-        //     contents += `<button class="content" id=${i}>${i}</button>` 
-        // }
         ////
         contents+=      '</div>';
 
@@ -129,20 +136,21 @@ function displayMarker(place) {
         document.querySelectorAll('button.content').forEach(element=>{ // 클래스명이 'content'인 버튼에 대해서
             element.addEventListener("click",function() {// 클릭 이벤트 등록
                 console.log(element.textContent);
+                document.getElementsByClassName('desc')[0].innerText = place.floors[element.id].desc
+                                                                        +'\n'+place.floors[element.id].contact;
             });
-            
         });
 
         map.panTo(marker.getPosition());// 마커를 중심으로 부드럽게 이동
 
     });
-    // marker.setMap(map);
     return marker;
-
 }
+
 function overlayClose() {
     infowindow.setMap(null);
 }
+
 function displayRect(minX,minY,maxX,maxY,color) {
     // 사각형을 구성하는 영역정보를 생성합니다
     let padding=0.0002;
