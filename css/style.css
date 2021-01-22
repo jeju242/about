@@ -5126,6 +5126,18 @@ button.bg-dark:focus {
 .mapbottom{
   margin-bottom: -5rem; }
 
+@media (max-width : 768px){
+  .mapbottom{
+    flex-direction: column;
+  }
+  .co{
+    margin-top: 2em;
+  }
+  .author-info{
+    width: 650px !important;
+  }
+}
+
 .d-inline-flex {
   display: -webkit-inline-box !important;
   display: -ms-inline-flexbox !important;
@@ -8585,3 +8597,24 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+
+.author-info .project-exp{
+  margin:1em 0em 1em 1em;
+  font-size: 15px;
+}
+
+.hero-wrap .jejugithub{
+  font-size: 30px;
+}
+.hero-wrap .jejugithub:hover{
+  font-size: 35px;
+  color: #5a3e0b;
+  text-decoration: underline;
+}
+.hero-wrap .memgithub:hover{
+  font-size: 20px;
+  color: #5a3e0b;
+  text-decoration: underline;
+}
+

@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/pages/quiz/quiz.css">
   </head>
   <body>
 
@@ -60,7 +61,7 @@
 					</div>
 				</section>
             </section>
-            <section class="ftco-section ftco-no-pt ftco-no-pb  ftco-intro">
+        <!--    <section class="ftco-section ftco-no-pt ftco-no-pb  ftco-intro">
 				<div class="container-fluid px-3 px-md-0">
 					<div class="row justify-content-end">
 						<div class="col-md-10 mt-3">
@@ -68,21 +69,63 @@
 								<div>
 									<h3>Quiz 통해 제주대학교에 대해 알아보기</h3>
 								</div>
-							</div>
-                            <br>
-                            <div class="ftco-animate" style="border:1px solid black">
-                                Q. 질문 ?
-                                <br>
-                                A. 답
-                                <br>
-                                <br>
-                            </div>
-						</div>
+              </div>
+              
+    				</div>
 					</div>
 				</div>
-			</section>
+			</section>-->
 
-		
+      <section>
+        <div class="home-box custom-box">
+          <h2>퀴즈 혼디모영 고치 풀어보게 마씸!</h2>
+          <p>문제 숫자:<span class = "total-question"></span></p>
+          <button type="button" class="btn" onclick="startQuiz()">퀴즈 시작</button>
+      </div>
+      <div class="quiz-box custom-box hide">
+          <div class="question-number">
+              
+          </div>
+          <div class="question-text">
+              
+          </div> 
+          <div class="option-container">
+              
+          </div>
+          <div class="next-question-btn">
+              <button type="button" class="btn" onclick="next()">다음</button>
+          </div>
+          <div class="answers-indicator">
+              
+          </div>
+      </div>
+      <div class="result-box custom-box hide">
+          <h1>퀴즈 결과</h1>
+          <table>
+              <tr>
+                  <td>문제 총합</td>
+                  <td><span class="total-question"></span></td>
+              </tr>
+              
+              <tr>
+                  <td>맞춘 문제</td>
+                  <td><span class="total-correct"></span></td>
+              </tr>
+              <tr>
+                  <td>틀린 문제</td>
+                  <td><span class="total-wrong"></span></td>
+              </tr>
+              <tr>
+                  <td>점수</td>
+                  <td><span class="total-score"></span></td>
+              </tr>
+          </table>
+          <div id="img"></div>
+          <!--<button type="button" class="btn">재시도</button>-->
+          <button type="button" class="btn" onclick="goToHome()">홈으로</button>
+      </div>
+       <script src="js/pages/quiz/quiz.js"></script>
+      </section>
 			
             <footer class="ftco-footer ftco-bg-dark ftco-section">
             
@@ -110,7 +153,6 @@
   <script src="js/scrollax.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
-  <script src="js/main.js"></script>
-    
+  <script src="js/main.js"></script> 
   </body>
 </html>
