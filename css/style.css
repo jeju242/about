@@ -473,10 +473,6 @@ pre {
     .container {
       max-width: 1140px; } }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> b42a53769e28a720e819c2418c27b84dbf632b4c
 .container-fluid {
   width: 100%;
   padding-right: 15px;
@@ -5128,10 +5124,8 @@ button.bg-dark:focus {
   display: flex !important; }
 
 .mapbottom{
-<<<<<<< HEAD
-  margin-bottom: -5rem; 
+  margin-bottom: -5rem; }
 
-}
 @media (max-width : 768px){
   .mapbottom{
     flex-direction: column;
@@ -5143,9 +5137,6 @@ button.bg-dark:focus {
     width: 650px !important;
   }
 }
-=======
-  margin-bottom: -5rem; }
->>>>>>> b42a53769e28a720e819c2418c27b84dbf632b4c
 
 .d-inline-flex {
   display: -webkit-inline-box !important;
@@ -8606,7 +8597,6 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
-<<<<<<< HEAD
 
 
 .author-info .project-exp{
@@ -8628,5 +8618,3 @@ textarea.form-control {
   text-decoration: underline;
 }
 
-=======
->>>>>>> b42a53769e28a720e819c2418c27b84dbf632b4c
