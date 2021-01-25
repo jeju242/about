@@ -23,6 +23,7 @@
     display: block;
     width: 100%;
     text-align: left;
+    overflow: hidden;
 }
 .info-container .content+.content {
     border-top: none;
