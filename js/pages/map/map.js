@@ -1,3 +1,28 @@
+var disqus_shortname = 'project-jeju';
+        var disqus_identifier = 'place.place_name';
+        var disqus_url = 'http://project-jeju.disqus.com/embed.js';
+        var disqus_config = function () { 
+          this.language = "en";
+        };
+    
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://project-jeju.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    
+        /* * * Disqus Reset Function * * */
+        var reset = function (newIdentifier, newUrl) {
+            DISQUS.reset({
+                reload: true,
+                config: function () {
+                    this.page.identifier = newIdentifier;
+                    this.page.url = newUrl;
+                }
+            });
+        };
+
 var infowindow = new kakao.maps.CustomOverlay({zIndex:9,clickable:true});
 var mapOption = {
     center: new kakao.maps.LatLng(33.4547007634407, 126.565112951543), // 지도의 중심좌표
@@ -34,7 +59,7 @@ function refineData(raw) {// 데이터를 객체로 저장
     return data;
 }
 
-function drawMap(mapOption){
+function drawMap(){
     // 지도를 생성합니다    
     let data = refineData(facilities);
     let area = new Array(8);
@@ -75,12 +100,11 @@ function drawMap(mapOption){
     }
 
     for (let i = 0; i<area.length; i++) {
-        // 작은 다각형이 가려지는 현상이 발생하여 zIndex를 설정함 임시
+        // 작은 다각형이 가려지는 현상이 발생하여 zIndex를 설정함
         rectangles[i].setZIndex(-i);
         rectangles[i].setMap(map);
         // 다각형에 클릭이벤트 등록
         kakao.maps.event.addListener(rectangles[i],'mousedown',function() {
-            console.log(i);
             if (prevMarker!=undefined) {// 이전에 선택된 영역의 마커 다 지움
                 for (let marker of markers[prevMarker]) {
                     marker.setMap(null);
@@ -93,9 +117,17 @@ function drawMap(mapOption){
         });
     }
 }
-var prevMarker;
+var prevMarker;// 이전에 표시된 마커들을 저장
+
+
+function inputTempData(place) { //// 건물데이터 넣으려고 만든 함수
+
+    place.floors = jsonData[place.place_name.slice(5)];
+}
+////
 
 function displayMarker(place) {
+    inputTempData(place);
     // 마커를 생성
     var marker = new kakao.maps.Marker({
         zIndex:1,
@@ -103,33 +135,46 @@ function displayMarker(place) {
     });
     // 마커에 클릭이벤트를 등록합니다
     kakao.maps.event.addListener(marker, 'click', function() {
+////테스트
+        console.log(jsonData[place.place_name.slice(5)]);
+        console.log(place.place_name.slice(5)+'\n');
+////
+        reset(place.place_name,'https://project-jeju.disqus.com/embed.js'+'/'+place.place_name);
+        console.log('https://project-jeju.disqus.com/embed.js'+'/'+place.place_name);
         // 마커를 클릭하면 커스텀 오버레이
-        // document.getElementById('Jmap').style.width = '50%';// 지도 크기 변경
-        map.relayout();
-
         let contents = '<div class="info-container">\
                             <div class="title">' + place.place_name.slice(5) + '\
                                 <div class="close" onclick="overlayClose()" title="닫기">X</div>\
                             </div>';
 
         //// 오버레이 내용
-        for (let i in place) {  
-            contents +=     '<div class="content">' + i +'</div>';
+        for (let i in place.floors) {
+            contents += `<button class="content" id=${i}>${i} ${place.floors[i]}</button>` 
         }
         ////
         contents+=      '</div>';
+
         infowindow.setContent(contents);
         infowindow.setPosition(marker.getPosition());
         infowindow.setMap(map);
-        map.panTo(marker.getPosition());// 마커를 중심으로 부드럽게 이동
-    });
-    // marker.setMap(map);
-    return marker;
+        
+        document.querySelectorAll('button.content').forEach(element=>{ // 클래스명이 'content'인 버튼에 대해서
+            element.addEventListener("click",function() {// 클릭 이벤트 등록
+                document.getElementsByClassName('desc')[0].innerText = place.floors[element.id];
+                                                                        
+            });
+        });
 
+        map.panTo(marker.getPosition());// 마커를 중심으로 부드럽게 이동
+
+    });
+    return marker;
 }
+
 function overlayClose() {
     infowindow.setMap(null);
 }
+
 function displayRect(minX,minY,maxX,maxY,color) {
     // 사각형을 구성하는 영역정보를 생성합니다
     let padding=0.0002;

@@ -20,6 +20,10 @@
 .info-container .content {
     border: 1px dashed blue;
     border-radius: 5px;
+    display: block;
+    width: 100%;
+    text-align: left;
+    overflow: hidden;
 }
 .info-container .content+.content {
     border-top: none;
