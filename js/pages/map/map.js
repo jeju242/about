@@ -119,7 +119,6 @@ function drawMap(){
 }
 var prevMarker;// 이전에 표시된 마커들을 저장
 
-
 function inputTempData(place) { //// 건물데이터 넣으려고 만든 함수
 
     place.floors = jsonData[place.place_name.slice(5)];
@@ -135,10 +134,7 @@ function displayMarker(place) {
     });
     // 마커에 클릭이벤트를 등록합니다
     kakao.maps.event.addListener(marker, 'click', function() {
-////테스트
-        console.log(jsonData[place.place_name.slice(5)]);
-        console.log(place.place_name.slice(5)+'\n');
-////
+
         reset(place.place_name,'https://project-jeju.disqus.com/embed.js'+'/'+place.place_name);
         console.log('https://project-jeju.disqus.com/embed.js'+'/'+place.place_name);
         // 마커를 클릭하면 커스텀 오버레이
