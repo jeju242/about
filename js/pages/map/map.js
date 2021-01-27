@@ -29,6 +29,7 @@ function refineData(raw) {// 데이터를 객체로 저장
         if (area!=-1){
             dataObj.area = area;
         }
+        inputData(dataObj);
         data.push(dataObj);
     }
     return data;
@@ -94,14 +95,19 @@ function drawMap(){
 }
 var prevMarker;// 이전에 표시된 마커들을 저장
 
-function inputTempData(place) { //// 건물데이터 넣으려고 만든 함수
-
+function inputData(place) { //// 건물데이터 넣으려고 만든 함수
+    // for (let i in collegeinfo) {
+    //     console.log(i);
+    // }
+    console.log(place.place_name);
     place.floors = jsonData[place.place_name.slice(5)];
+    for (let i in place.floors) {
+        place.floors.content = colleges[i.name];
+    }
 }
 ////
 
 function displayMarker(place) {
-    inputTempData(place);
     // 마커를 생성
     var marker = new kakao.maps.Marker({
         zIndex:1,
@@ -109,10 +115,6 @@ function displayMarker(place) {
     });
     // 마커에 클릭이벤트를 등록합니다
     kakao.maps.event.addListener(marker, 'click', function() {
-////테스트
-        console.log(jsonData[place.place_name.slice(5)]);
-        console.log(place.place_name.slice(5)+'\n');
-////
 
         // 마커를 클릭하면 커스텀 오버레이
         let contents = '<div class="info-container">\
