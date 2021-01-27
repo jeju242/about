@@ -28,16 +28,17 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- 지도 커스텀 오버레이 -->
     <link rel="stylesheet" href="css/pages/map/overlay.css">
-    <!--  -->
+    <!-- 리스트 -->
+    <link rel="stylesheet" href="css/pages/map/list.css">
 </head>
 <body>
 	<div id="colorlib-page">
 		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
-		<aside id="colorlib-aside" role="complementary" class="js-fullheight">
+		<aside id="colorlib-aside" role="complementary" class="js-fullheight" style="width: 230px;">
 			<nav id="colorlib-main-menu" role="navigation">
 				<ul>
 					<li class="colorlib-active"><a href="index.html">Home</a></li>
-                    <li><a href="map.html">Map</a></li>
+                    <li><a href="#map" class="scroll">Map</a></li>
                     <li><a href="#list" class="scroll">List</a></li>
                     <li><a href="quiz.html">Quiz</a></li>
 					<li><a href="about.html">About Us</a></li>
@@ -81,8 +82,79 @@
                                 </div>
                                 <div class="author-info text p-4 p-md-5 mt-5 mb-5 align-items-center d-flex ftco-animate">
                                     <div class="desc co" style="border:1px solid black; width:100%; height: 500px;">
-                                        <h1>건물정보설명란</h1>
-                                        소개 컴퓨터공학전공의 교육목표는 21세기 정보화 사회의 중심에 있는 핵심 기술인 컴퓨터와 정보통신을 포함하는 IT 기술에 관한 이론과 이를 응용할 수 있는 방법에 대하여 배움으로써 정보화 사회의 신지식산업을 선도할 수 있는 우수한 인재를 양성하는 것이다. 이를 효과적으로 달성하기 위하여, 본 학과는 디지털 논리회로, 컴퓨터 구조 등의 과목을 통하여 하드웨어적 개념을 확립시키고, 이를 바탕으로 한 운영체제, 소프트웨어공학, 데이터베이스, 알고리즘 설계와 분석 등의 소프트웨어적 과목, 컴퓨터와 통신이 접목된 정보통신, 차세대통신망, 모바일 프로그래밍, 인공지능 등 컴퓨터를 응용할 수 있는 모든 분야를 다룸으로써 컴퓨터 기술의 제반분야에 대한 학문적 개념 확립과 컴퓨터 및 정보통신 산업에 필요한 전문가 및 개발자를 양성하고 있다. 또한 주식회사 카카오를 비롯한 여러 산업체와 직접적으로 연계하여 교과과정을 운영함으로써 산업계의 요구에 부합하는 우수한 인재를 양성할 수 있는 시스템을 마련하고 있다.
+                                      <dl class="sub_content_list">
+                                        <dd>
+                                          <dl>
+                                            <dt>소개</dt>
+                                            <dd>
+                                              <p>컴퓨터공학전공의 교육목표는 21세기 정보화 사회의 중심에 있는 핵심 기술인 컴퓨터와 
+                                                정보통신을 포함하는 IT 기술에 관한 이론과 이를 응용할 수 있는 방법에 대하여 배움으로써
+                                                정보화 사회의 신지식산업을 선도할 수 있는 우수한 인재를 양성하는 것이다. 
+                                                이를 효과적으로 달성하기 위하여, 본 학과는 디지털 논리회로, 컴퓨터 구조 등의 
+                                                과목을 통하여 하드웨어적 개념을 확립시키고, 이를 바탕으로 한 운영체제, 소프트웨어공학, 
+                                                데이터베이스, 알고리즘 설계와 분석 등의 소프트웨어적 과목, 컴퓨터와 통신이 접목된 
+                                                정보통신, 차세대통신망, 모바일 프로그래밍, 인공지능 등 컴퓨터를 응용할 수 있는 
+                                                모든 분야를 다룸으로써 컴퓨터 기술의 제반분야에 대한 학문적 개념 확립과 
+                                                컴퓨터 및 정보통신 산업에 필요한 전문가 및 개발자를 양성하고 있다. 
+                                                또한 주식회사 카카오를 비롯한 여러 산업체와 직접적으로 연계하여 교과과정을 운영함으로써 
+                                                산업계의 요구에 부합하는 우수한 인재를 양성할 수 있는 시스템을 마련하고 있다.</p>
+                                              </dd>
+                                            </dl>
+                                            <dl>
+                                              <dt>목표</dt>
+                                              <dd>
+                                                <p>I. 창의성<br/>
+                                                  - 컴퓨터공학의 기초지식과 이론을 체계적으로 교육하여, 공학적 사고 능력과 창의력을 겸비한 인력 을 양성한다.
+                                                </p>
+                                                <p>II. 전문성<br/>
+                                                  - 기술적 문제점에 대하여 해결 가능한 대응책을 제시할 수 있도록 전문지식을 함양하고, 
+                                                  미래지향적인 신기술을 효과적으로 접목시킬 수 있는 인력을 양성한다.
+                                                </p>
+                                                <p>III.실무응용<br/> 
+                                                  - 실제 현장에서 필요한 실무 능력에 필수적인 전문적 교육을 바탕으로 현장에 필요한 인력을 양성한다.
+                                                </p>
+                                                <p>IV. 국제적 감각<br/> 
+                                                  -급변하는 IT분야에서 글로벌 공동연구 및 업무가 가능한 능력을 갖춘 전문 인력을 양성한다.
+                                                </p>
+                                                <p>V. 직업윤리<br/> 
+                                                  - 정보화 사회의 리더 역할을 할 수 있는 지도록 및 도덕적 책임감을 겸비한 인력을 양성한다.
+                                                </p>
+                                              </dd>
+                                            </dl>
+                                            <dl>
+                                              <dt>진로</dt>
+                                              <dd>
+                                                <p>
+                                                  졸업 후 진로는 컴퓨터에 관한 제반 기술을 필요로 하는 분야 즉, 
+                                                  소프트웨어 기술개발분야, 인터넷, 모바일, 임베디드 등의 정보통신분야, 컴퓨터 주변기기 기술 분야, 
+                                                  그 외의 정보 산업에 필수적으로 요구되고 있는 핵심 기술 분야로 진출할 수 있다. 
+                                                  또한 대학원에 진학하여 심층적인 학술연구를 기반으로 연구소나 학계에 진출할 수 있다.
+                                                </p>
+                                              </dd>
+                                            </dl>
+                                            <dl>
+                                              <dt>역사</dt>
+                                              <dd>
+                                                <p>85년 정보공학과로 신설</p>
+                                                <p>95년 대학원 석사과정 개설</p>
+                                                <p>97년 통신컴퓨터공학부로 통합</p>
+                                                <p>97년 산업대학원 석사과정 개설</p>
+                                                <p>99년 대학원 박사과정 개설</p>
+                                                <p>09년 컴퓨터공학과 분리</p>
+                                              </dd>
+                                            </dl>
+                                          </dd>
+                                          <dd class="office_info">
+                                            <table>
+                                              <tr>
+                                                <th>관리부서 :</th>
+                                                <td> 컴퓨터공학전공</td>
+                                                <th>전화번호 :</th>
+                                                <td> 064-754-3650, Fax 064-755-3620</td>
+                                              </tr>
+                                            </table>
+                                          </dd>
+                                        </dl>                                  
                                     </div>
                                 </div>
                             </div>
@@ -105,22 +177,39 @@
                         </div>
             </section>
       
-      <section id="list">
+      <section id="list" class="ftco-section ftco-bread">
           
-        <div>
-        <span>
-        <h4>인문대학</h4>
-            <p>국어국문학과</p>
-            <p>영어영문학과</p>
-            <p>일어일문학과</p>
-            <p>중어중문학과</p>
-            <p>독일학과</p>
-            <p>사학과</p>
-            <p>사회학과</p>
-            <p>철학과</p>
-        </span>
-        <span>
-        <h4>사회과학대학</h4>
+        <div class="list-container">
+          <div class="row no-gutters slider-text justify-content-end align-items-center">
+            <div class="col-md-10 ftco-animate">
+
+              <h1 class="bread">List</h1>
+            </div>
+          </div>
+      </section>
+      
+      <section class="ftco-section-no-padding">
+        <div class="container-fluid px-3 px-md-0">
+            <div class="row justify-content-end">
+                <div class="hero-wrap col-md-10">
+                  <div class="col-md-6 ftco-animate fadeInUp ftco-animated">
+                    <h4><a data-toggle="collapse" data-parent="#accordion" href="#collapse1"> 인문대학</a></h4>
+                    <div id="collapse1" class="panel-collapse collapse in ftco-animated ftco-animate fadeInDown">
+                      <p>국어국문학과</p>
+                      <p>영어영문학과</p>
+                      <p>일어일문학과</p>
+                      <p>중어중문학과</p>
+                      <p>독일학과</p>
+                      <p>사학과</p>
+                      <p>사회학과</p>
+                      <p>철학과</p>
+                    </div> 
+                  </div>
+                </div>
+            </div>
+        </div>
+      </section>
+        <!-- <h4>사회과학대학</h4>
             <p>행정학과</p>
             <p>정치외교학과</p>
             <p>언론홍보학과</p>
@@ -228,10 +317,8 @@
         <span>
         <h4>약학대학</h4>
             <p>약학과</p>
-        </span>
-        </div>
+        </span> -->
     
-      </section>
 		
 			
       <footer class="ftco-footer ftco-bg-dark ftco-section"></footer>

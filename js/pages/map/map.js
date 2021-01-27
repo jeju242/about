@@ -101,9 +101,7 @@ function inputData(place) { //// 건물데이터 넣으려고 만든 함수
     // }
     console.log(place.place_name);
     place.floors = jsonData[place.place_name.slice(5)];
-    for (let i in place.floors) {
-        place.floors.content = colleges[i.name];
-    }
+    
 }
 ////
 
@@ -135,8 +133,10 @@ function displayMarker(place) {
         
         document.querySelectorAll('button.content').forEach(element=>{ // 클래스명이 'content'인 버튼에 대해서
             element.addEventListener("click",function() {// 클릭 이벤트 등록
-                document.getElementsByClassName('desc')[0].innerText = place.floors[element.id];
-                                                                        
+                // document.getElementsByClassName('desc')[0].innerHTML = place.floors[element.id];
+                document.getElementsByClassName('desc')[0].innerHTML = collegeInfo[place.floors[element.id]];
+                console.log(collegeInfo[place.floors[element.id]]);
+                console.log(place.floors[element.id])      ;                                                  
             });
         });
 
