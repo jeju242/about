@@ -1,0 +1,9 @@
+.major a {
+    color: black;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+.major a:hover {
+    /* transform: scale(0.7); */
+    text-decoration: underline;
+}

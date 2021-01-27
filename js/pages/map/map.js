@@ -135,8 +135,7 @@ function displayMarker(place) {
             element.addEventListener("click",function() {// 클릭 이벤트 등록
                 // document.getElementsByClassName('desc')[0].innerHTML = place.floors[element.id];
                 document.getElementsByClassName('desc')[0].innerHTML = collegeInfo[place.floors[element.id]];
-                console.log(collegeInfo[place.floors[element.id]]);
-                console.log(place.floors[element.id])      ;                                                  
+                                                
             });
         });
 
@@ -173,4 +172,24 @@ function displayRect(minX,minY,maxX,maxY,color) {
     return rectangle;
 }
 
-drawMap(mapOption);// 실행
+function findXY(placeName) {
+    for (let i of facilities) {
+        if (('제주대학교'+i[0]).indexOf(placeName)!=-1) {
+            return [i[1],i[2]];
+        } 
+    }
+}
+function panTo(x,y) {
+    // 이동할 위도 경도 위치를 생성합니다 
+    var moveLatLon = new kakao.maps.LatLng(parseFloat(y), parseFloat(x));
+    
+    // 지도 중심을 부드럽게 이동시킵니다
+    // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
+    // map.panTo(moveLatLon);
+    map.setCenter(moveLatLon);
+    map.relayout();
+
+}  
+
+
+drawMap();// 실행
