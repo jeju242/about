@@ -166,15 +166,16 @@ function displayMarker(place) {
                 } else {
                     for (let i=0; i<floorSplit.length; i++) {
                         document.getElementsByClassName('desc')[0].innerHTML += 
-                        `<a id="${floorSplit[i]}" class="floorSplit" style="color:blue; text-decoration:underline; cursor:pointer;">
+                        `<div><a id="${floorSplit[i]}" class="floorSplit" style="color:blue; text-decoration:underline; cursor:pointer;">
                             ${floorSplit[i]}
-                        </a>  `;
+                        </a></div>  `;
                     }
                 }
                 document.querySelectorAll('a.floorSplit').forEach(e=>{
                     e.addEventListener("click",function() {
-                        if (collegeInfo[e.text]!= undefined) {
-                            document.getElementsByClassName('desc')[0].innerHTML = collegeInfo[e.text];
+                        console.log(e.textContent.trim());
+                        if (collegeInfo[e.text.trim()]!= undefined) {
+                            document.getElementsByClassName('desc')[0].innerHTML = collegeInfo[e.text.trim()];
                         }else {
                             document.getElementsByClassName('desc')[0].innerHTML = 'testestsetstsets';
                         }
