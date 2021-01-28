@@ -11,7 +11,7 @@ function generateListItem(sequence, collegeName) {
         // let xy = findXY(collegeName);
         // console.log(xy);
         item += `<div class="major">\
-                    <a class="scroll" href="#map" onclick="findXY('${collegeName}')">
+                    <a class="scroll" href="#map" onclick="drawMarkerForList('${collegeName}'); insertDesc('${major}')">
                         ${major}
                     </a>\
                 </div>`;

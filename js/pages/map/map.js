@@ -169,41 +169,25 @@ function displayRect(minX,minY,maxX,maxY,color) {
     return rectangle;
 }
 var prevMarkerForList;
-function findXY(placeName) {
+function drawMarkerForList(placeName) {
     for (let i of data) {
-        console.log(i);
         if ((i.place_name).indexOf('제주대학교'+placeName)!=-1) {
             if (prevMarkerForList!=undefined) {
                 prevMarkerForList.setMap(null);
             }
             prevMarkerForList = displayMarker(i)
             prevMarkerForList.setMap(map);
-            panTo(i);
-            // console.log(i);
+
+            const moveLatLon = new kakao.maps.LatLng(i.y, i.x);
+            map.setCenter(moveLatLon);
+
             return i;
         } 
     }
 }
-function panTo(place) {
-    // 이동할 위도 경도 위치를 생성합니다 
-    // var moveLatLon = new kakao.maps.LatLng(parseFloat(y), parseFloat(x));
-    
-    var moveLatLon = new kakao.maps.LatLng(place.y, place.x);
-    
-    // 지도 중심을 부드럽게 이동시킵니다
-    // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
-    // map.panTo(moveLatLon);
-    displayMarker(place).setMap(map);
-    map.setCenter(moveLatLon);
-    // map.relayout();
-
-}  
-
-function findPlaceByMajor(major) {
-    for (let i in collegeInfoForList) {
-        console.log(i);
-    }
+function insertDesc(major) {
+    document.getElementsByClassName('desc')[0]
+    .innerHTML = collegeInfo[major];
 }
 
 drawMap();// 실행
-findPlaceByMajor("test");
