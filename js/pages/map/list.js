@@ -10,7 +10,7 @@ function generateListItem(sequence, collegeName) {
     for (let major in collegeInfoForList[collegeName]) {
         let xy = findXY(collegeName);
         item += `<div class="major">\
-                    <a class="scroll" href="#map" onclick="panTo(${xy[1]},${xy[0]})">
+                    <a class="scroll" href="#map" onclick="panTo('${xy[0]}','${xy[1]}')">
                         ${major}
                     </a>\
                 </div>`;
