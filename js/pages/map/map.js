@@ -156,10 +156,27 @@ function displayMarker(place) {
         infowindow.setMap(map);
         
         document.querySelectorAll('button.content').forEach(element=>{ // 클래스명이 'content'인 버튼에 대해서
-            element.addEventListener("click",function() {// 클릭 이벤트 등록
-                // document.getElementsByClassName('desc')[0].innerHTML = place.floors[element.id];
-                document.getElementsByClassName('desc')[0].innerHTML = collegeInfo[place.floors[element.id]];
-                                                
+            element.addEventListener("click",function() {
+
+                // 오버레이 항목 클릭하면 설명 생성
+                document.getElementsByClassName('desc')[0].innerHTML = "";
+                let floorSplit = place.floors[element.id].split(',')
+                if (floorSplit.length == 1) {
+                    document.getElementsByClassName('desc')[0].innerHTML = collegeInfo[place.floors[element.id]];
+                } else {
+                    for (let i=0; i<floorSplit.length; i++) {
+                        document.getElementsByClassName('desc')[0].innerHTML += `<a id="${floorSplit[i]}" class="floorSplit">${floorSplit[i]}</a>  `;
+                    }
+                }
+                document.querySelectorAll('a.floorSplit').forEach(e=>{
+                    e.addEventListener("click",function() {
+                        if (collegeInfo[e.text]!= undefined) {
+                            document.getElementsByClassName('desc')[0].innerHTML = collegeInfo[e.text];
+                        }else {
+                            document.getElementsByClassName('desc')[0].innerHTML = 'testestsetstsets';
+                        }
+                    });
+                });    
             });
         });
 
