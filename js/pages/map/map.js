@@ -1,3 +1,28 @@
+var disqus_shortname = 'project-jeju';
+        var disqus_identifier = 'place.place_name';
+        var disqus_url = 'http://project-jeju.disqus.com/embed.js';
+        var disqus_config = function () { 
+          this.language = "en";
+        };
+    
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://project-jeju.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    
+        /* * * Disqus Reset Function * * */
+        var reset = function (newIdentifier, newUrl) {
+            DISQUS.reset({
+                reload: true,
+                config: function () {
+                    this.page.identifier = newIdentifier;
+                    this.page.url = newUrl;
+                }
+            });
+        };
+
 var infowindow = new kakao.maps.CustomOverlay({zIndex:9,clickable:true});
 var mapOption = {
     center: new kakao.maps.LatLng(33.4547007634407, 126.565112951543), // 지도의 중심좌표
@@ -111,6 +136,8 @@ function displayMarker(place) {
     // 마커에 클릭이벤트를 등록합니다
     kakao.maps.event.addListener(marker, 'click', function() {
 
+        reset(place.place_name,'https://project-jeju.disqus.com/embed.js'+'/'+place.place_name);
+        console.log('https://project-jeju.disqus.com/embed.js'+'/'+place.place_name);
         // 마커를 클릭하면 커스텀 오버레이
         let contents = '<div class="info-container">\
                             <div class="title">' + place.place_name.slice(5) + '\
