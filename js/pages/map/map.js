@@ -141,7 +141,7 @@ function displayMarker(place) {
         // 마커를 클릭하면 커스텀 오버레이
         let contents = '<div class="info-container">\
                             <div class="title">' + place.place_name.slice(5) + '\
-                                <div class="close" onclick="overlayClose()" title="닫기">X</div>\
+                                <div class="close" onclick="overlayClose()" title="닫기">x</div>\
                             </div>';
 
         //// 오버레이 내용
