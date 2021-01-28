@@ -54,14 +54,15 @@ function refineData(raw) {// 데이터를 객체로 저장
         if (area!=-1){
             dataObj.area = area;
         }
+        inputData(dataObj);
         data.push(dataObj);
     }
     return data;
 }
+let data = refineData(facilities);
 
 function drawMap(){
     // 지도를 생성합니다    
-    let data = refineData(facilities);
     let area = new Array(8);
     let rectangles = [];
     let markers = new Array(8);
@@ -119,14 +120,14 @@ function drawMap(){
 }
 var prevMarker;// 이전에 표시된 마커들을 저장
 
-function inputTempData(place) { //// 건물데이터 넣으려고 만든 함수
+function inputData(place) { //// 건물데이터 넣으려고 만든 함수
 
     place.floors = jsonData[place.place_name.slice(5)];
+    
 }
 ////
 
 function displayMarker(place) {
-    inputTempData(place);
     // 마커를 생성
     var marker = new kakao.maps.Marker({
         zIndex:1,
@@ -140,7 +141,7 @@ function displayMarker(place) {
         // 마커를 클릭하면 커스텀 오버레이
         let contents = '<div class="info-container">\
                             <div class="title">' + place.place_name.slice(5) + '\
-                                <div class="close" onclick="overlayClose()" title="닫기">X</div>\
+                                <div class="close" onclick="overlayClose()" title="닫기">x</div>\
                             </div>';
 
         //// 오버레이 내용
@@ -155,9 +156,30 @@ function displayMarker(place) {
         infowindow.setMap(map);
         
         document.querySelectorAll('button.content').forEach(element=>{ // 클래스명이 'content'인 버튼에 대해서
-            element.addEventListener("click",function() {// 클릭 이벤트 등록
-                document.getElementsByClassName('desc')[0].innerText = place.floors[element.id];
-                                                                        
+            element.addEventListener("click",function() {
+
+                // 오버레이 항목 클릭하면 설명 생성
+                document.getElementsByClassName('desc')[0].innerHTML = "";
+                let floorSplit = place.floors[element.id].split(',')
+                if (floorSplit.length == 1) {
+                    document.getElementsByClassName('desc')[0].innerHTML = collegeInfo[place.floors[element.id]];
+                } else {
+                    for (let i=0; i<floorSplit.length; i++) {
+                        document.getElementsByClassName('desc')[0].innerHTML += 
+                        `<a id="${floorSplit[i]}" class="floorSplit" style="color:blue; text-decoration:underline; cursor:pointer;">
+                            ${floorSplit[i]}
+                        </a>  `;
+                    }
+                }
+                document.querySelectorAll('a.floorSplit').forEach(e=>{
+                    e.addEventListener("click",function() {
+                        if (collegeInfo[e.text]!= undefined) {
+                            document.getElementsByClassName('desc')[0].innerHTML = collegeInfo[e.text];
+                        }else {
+                            document.getElementsByClassName('desc')[0].innerHTML = 'testestsetstsets';
+                        }
+                    });
+                });    
             });
         });
 
@@ -193,5 +215,26 @@ function displayRect(minX,minY,maxX,maxY,color) {
         });
     return rectangle;
 }
+var prevMarkerForList;
+function drawMarkerForList(placeName) {
+    for (let i of data) {
+        if ((i.place_name).indexOf('제주대학교'+placeName)!=-1) {
+            if (prevMarkerForList!=undefined) {
+                prevMarkerForList.setMap(null);
+            }
+            prevMarkerForList = displayMarker(i)
+            prevMarkerForList.setMap(map);
 
-drawMap(mapOption);// 실행
+            const moveLatLon = new kakao.maps.LatLng(i.y, i.x);
+            map.setCenter(moveLatLon);
+
+            return i;
+        } 
+    }
+}
+function insertDesc(major) {
+    document.getElementsByClassName('desc')[0]
+    .innerHTML = collegeInfo[major];
+}
+
+drawMap();// 실행
