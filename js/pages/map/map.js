@@ -165,7 +165,10 @@ function displayMarker(place) {
                     document.getElementsByClassName('desc')[0].innerHTML = collegeInfo[place.floors[element.id]];
                 } else {
                     for (let i=0; i<floorSplit.length; i++) {
-                        document.getElementsByClassName('desc')[0].innerHTML += `<a id="${floorSplit[i]}" class="floorSplit">${floorSplit[i]}</a>  `;
+                        document.getElementsByClassName('desc')[0].innerHTML += 
+                        `<a id="${floorSplit[i]}" class="floorSplit" style="color:blue; text-decoration:underline; cursor:pointer;">
+                            ${floorSplit[i]}
+                        </a>  `;
                     }
                 }
                 document.querySelectorAll('a.floorSplit').forEach(e=>{
