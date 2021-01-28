@@ -8,9 +8,10 @@ function generateListItem(sequence, collegeName) {
                     <h4><a data-toggle="collapse" data-parent="#accordion" href="#collapse${sequence}">${collegeName}</a></h4>
                     <div id="collapse${sequence}" class="panel-collapse collapse in ftco-animated ftco-animate fadeInDown">`;
     for (let major in collegeInfoForList[collegeName]) {
-        let xy = findXY(collegeName);
+        // let xy = findXY(collegeName);
+        // console.log(xy);
         item += `<div class="major">\
-                    <a class="scroll" href="#map" onclick="panTo('${xy[0]}','${xy[1]}')">
+                    <a class="scroll" href="#map" onclick="findXY('${collegeName}')">
                         ${major}
                     </a>\
                 </div>`;

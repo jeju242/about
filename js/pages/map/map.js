@@ -34,10 +34,10 @@ function refineData(raw) {// 데이터를 객체로 저장
     }
     return data;
 }
+let data = refineData(facilities);
 
 function drawMap(){
     // 지도를 생성합니다    
-    let data = refineData(facilities);
     let area = new Array(8);
     let rectangles = [];
     let markers = new Array(8);
@@ -96,10 +96,7 @@ function drawMap(){
 var prevMarker;// 이전에 표시된 마커들을 저장
 
 function inputData(place) { //// 건물데이터 넣으려고 만든 함수
-    // for (let i in collegeinfo) {
-    //     console.log(i);
-    // }
-    console.log(place.place_name);
+
     place.floors = jsonData[place.place_name.slice(5)];
     
 }
@@ -171,25 +168,42 @@ function displayRect(minX,minY,maxX,maxY,color) {
         });
     return rectangle;
 }
-
+var prevMarkerForList;
 function findXY(placeName) {
-    for (let i of facilities) {
-        if (('제주대학교'+i[0]).indexOf(placeName)!=-1) {
-            return [i[1],i[2]];
+    for (let i of data) {
+        console.log(i);
+        if ((i.place_name).indexOf('제주대학교'+placeName)!=-1) {
+            if (prevMarkerForList!=undefined) {
+                prevMarkerForList.setMap(null);
+            }
+            prevMarkerForList = displayMarker(i)
+            prevMarkerForList.setMap(map);
+            panTo(i);
+            // console.log(i);
+            return i;
         } 
     }
 }
-function panTo(x,y) {
+function panTo(place) {
     // 이동할 위도 경도 위치를 생성합니다 
-    var moveLatLon = new kakao.maps.LatLng(parseFloat(y), parseFloat(x));
+    // var moveLatLon = new kakao.maps.LatLng(parseFloat(y), parseFloat(x));
+    
+    var moveLatLon = new kakao.maps.LatLng(place.y, place.x);
     
     // 지도 중심을 부드럽게 이동시킵니다
     // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
     // map.panTo(moveLatLon);
+    displayMarker(place).setMap(map);
     map.setCenter(moveLatLon);
     // map.relayout();
 
 }  
 
+function findPlaceByMajor(major) {
+    for (let i in collegeInfoForList) {
+        console.log(i);
+    }
+}
 
 drawMap();// 실행
+findPlaceByMajor("test");
